@@ -15,7 +15,7 @@ function campoMinato() {
     
         for(let i = 0 ; i < numSquare ; i++){
             const square = createSquare(i+1 , numSquare);
-    
+            
             playground.append(square) ;
         }
     
@@ -43,6 +43,7 @@ function campoMinato() {
             for (let i = 0; i < bombs.length; i++) {
                 allSquare[bombs[i] -1].classList.add('bomb')
                 allSquare[bombs[i] -1].innerHTML= `<i class="fa-solid fa-bomb fa-bounce ombra-icon"></i>`
+                audioplay()
                 
             }
              } else{
@@ -70,5 +71,16 @@ function campoMinato() {
     }
     
     
+
+    function audioplay() {
+                    let audio = new Audio("../sounds/nuclear-bomb-exploding-close-tomas-herudek-1-00-08.mp3");
+                        audio.play();
+                        audio.volume = 0.1;
+                }
+
 }
 
+
+// creo container con opaciti bassa 
+// con bottone che resetta tutto 
+// cosi evityo di toccare altre 
