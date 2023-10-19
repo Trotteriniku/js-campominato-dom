@@ -42,6 +42,7 @@ function campoMinato() {
             let allSquare = document.getElementsByClassName('square');
             for (let i = 0; i < bombs.length; i++) {
                 allSquare[bombs[i] -1].classList.add('bomb')
+                allSquare[bombs[i] -1].innerHTML= `<i class="fa-solid fa-bomb fa-bounce ombra-icon"></i>`
                 
             }
              } else{

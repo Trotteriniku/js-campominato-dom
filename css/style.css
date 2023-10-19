@@ -19,7 +19,7 @@ button{
 }
 
 .square{
-    border: 2px solid white;
+    border: 2px outset #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,9 +27,16 @@ button{
 }
 
 .active{
-    background-color: #249ea0;
+    background-color: #249c9e;
+    border: 4px outset #249c9e;
 }
 
 .bomb{
     background-color: red;
+    border: 4.5px outset #000000;
+
+}
+
+.ombra-icon{
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
