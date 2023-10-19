@@ -38,11 +38,14 @@ function campoMinato() {
         square.innerHTML = content;
     
         square.addEventListener('click' , () => {
-            square.classList.add('active');
             if (bombs.includes(content)) {
-                alert('sei esploso')
-            } else{
+            let allSquare = document.getElementsByClassName('square');
+            for (let i = 0; i < bombs.length; i++) {
+                allSquare[bombs[i] -1].classList.add('bomb')
                 
+            }
+             } else{
+                square.classList.add('active');
             }
             console.log(content);
         }); 
