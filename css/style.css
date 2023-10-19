@@ -1,0 +1,35 @@
+body{
+    background-color: #faab36;
+}
+
+h1{
+    text-shadow: 5px 5px 5px rgb(0, 0, 0);
+}
+
+.playground{
+    width: 550px;
+    height: 550px;
+    background-color: #1e65a7;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+button{
+    margin: 0 auto;
+}
+
+.square{
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.active{
+    background-color: #249ea0;
+}
+
+.bomb{
+    background-color: red;
+}
