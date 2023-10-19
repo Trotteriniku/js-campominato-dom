@@ -38,21 +38,29 @@ function campoMinato() {
         square.innerHTML = content;
     
         square.addEventListener('click' , () => {
-            if (bombs.includes(content)) {
+            
+            if (bombs.includes(content)) { 
             let allSquare = document.getElementsByClassName('square');
+            const loseorwin =document.querySelector('.loseScreen')
             for (let i = 0; i < bombs.length; i++) {
+                
                 allSquare[bombs[i] -1].classList.add('bomb')
                 allSquare[bombs[i] -1].innerHTML= `<i class="fa-solid fa-bomb fa-bounce ombra-icon"></i>`
-                audioplay()
-                
-            }
+                bombSound()
+                loseorwin.classList.remove('d-none'); 
+            }   
              } else{
                 square.classList.add('active');
+                // vicorySound()
+                // loseorwin.classList.remove('d-none'); 
             }
             console.log(content);
         }); 
         return square;
     } 
+
+
+        vict
 
 
     function bombsMaker(numSquare) {
@@ -72,11 +80,17 @@ function campoMinato() {
     
     
 
-    function audioplay() {
+    function bombSound() {
                     let audio = new Audio("../sounds/nuclear-bomb-exploding-close-tomas-herudek-1-00-08.mp3");
                         audio.play();
                         audio.volume = 0.1;
-                }
+    }
+
+    function vicorySound() {
+        let audio = new Audio("../sounds/level-complete-retro-video-game-music-soundroll-variation-3-3-00-05.mp3");
+            audio.play();
+            audio.volume = 1;
+    }
 
 }
 
