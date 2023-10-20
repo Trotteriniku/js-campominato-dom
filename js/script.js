@@ -2,9 +2,13 @@
 campoMinato()
 function campoMinato() {
     const btn = document.querySelector('button');
-    const numBomb = 16;
+    const numBomb = 1;
     let bombs;
+    let gameover;
+    let score;
     btn.addEventListener('click', function() {
+        gameover =false;
+        score= 0;
     const numSquare = parseInt(document.getElementById('difficultSele').value);
 
     bombs = bombsMaker(numSquare)
@@ -28,6 +32,8 @@ function campoMinato() {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
     }
     
+    
+
     function createSquare(content , rowSquare){
         const squareWidth = Math.sqrt(rowSquare);
         const square = document.createElement('div');
@@ -36,11 +42,13 @@ function campoMinato() {
         square.style.width = `calc(100% /  ${squareWidth} )`
         square.style.height = `calc(100% /  ${squareWidth} )`
         square.innerHTML = content;
-    
+        
         square.addEventListener('click' , () => {
-            
-            if (bombs.includes(content)) { 
-            let allSquare = document.getElementsByClassName('square');
+             let allSquare = document.getElementsByClassName('square');
+            if (bombs.includes(parseInt(square.textContent))) { 
+            gameover = true
+
+             allSquare = document.getElementsByClassName('square');
             const loseorwin =document.querySelector('.loseScreen')
             for (let i = 0; i < bombs.length; i++) {
                 
@@ -48,26 +56,31 @@ function campoMinato() {
                 allSquare[bombs[i] -1].innerHTML= `<i class="fa-solid fa-bomb fa-bounce ombra-icon"></i>`
                 bombSound()
                 loseorwin.classList.remove('d-none'); 
-            }   
+            } 
+            
              } else{
                 square.classList.add('active');
+                score++;
+                if (allSquare.length - numBomb === score) {
+                    Win()
+                }
+                
                 // vicorySound()
                 // loseorwin.classList.remove('d-none'); 
             }
             console.log(content);
-        }); 
+        }, {once : true});
         return square;
     } 
 
 
-        vict
+       
 
 
     function bombsMaker(numSquare) {
         const bombsarray =[];
         while (bombsarray.length < numBomb) {
             let bomb =getRndInteger(1, numSquare);
-            // !bombsarray.includes(bomb)? bombsarray.push(bomb): ;
              
              if (!bombsarray.includes(bomb)){
                  bombsarray.push(bomb)
@@ -78,6 +91,13 @@ function campoMinato() {
             return bombsarray
     }
     
+  
+    function Win() {
+        // gameover = false
+        console.log('hai vinto');
+        vicorySound() 
+              
+        }
     
 
     function bombSound() {
@@ -92,7 +112,7 @@ function campoMinato() {
             audio.volume = 1;
     }
 
-}
+}   
 
 
 // creo container con opaciti bassa 
